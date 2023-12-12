@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { BINS_DATA } from "./utils/config.js";
 import {
