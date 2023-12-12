@@ -1,25 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
-main {
+body {
+  background-color: #191919;
   font-family: "Lato";
+  color: #d4d4d4;
+}
+
+main {
   h3 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0.5rem;
   }
 }
 
 .container {
   margin: 1.5rem auto;
-  width: 370px;
+  width: 300px;
 }
 
 .line {
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid #d4d4d4;
   margin-top: 1.5rem;
   width: 100%;
 
   &--thin {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #d4d4d4;
     margin-top: 1rem;
   }
 }

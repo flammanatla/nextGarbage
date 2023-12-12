@@ -50,7 +50,7 @@ export default function Home() {
     <main>
       <div className="container">
         <h3>Today&apos;s date: {todayDate.toDateString()}</h3>
-        <h3>Next collection date: {nextCollectionDate.toDateString()}</h3>
+        <h3>Next collection: {nextCollectionDate.toDateString()}</h3>
         <div className="line"></div>
         <Bins weekSchedule={collectionScheduleWeek} />
       </div>
