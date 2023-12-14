@@ -3,19 +3,24 @@
 import Image from "next/image";
 import { BINS_DATA } from "./utils/config.js";
 import {
-  calculateNextCollectionDate,
+  calculatePlannedCollectionDate,
   calculateCollectionSchedule,
+  calculateNextCollectionDate,
 } from "./utils/helpers.js";
+
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [todayDate, setTodayDate] = useState(new Date());
-  const [dayShift, setDayShift] = useState(0);
+  const plannedCollectionDate = calculatePlannedCollectionDate(todayDate);
 
-  const nextCollectionDate = calculateNextCollectionDate(todayDate);
+  const [adjustedCollectionDate, setAdjustedCollectionDate] = useState(
+    plannedCollectionDate
+  );
 
-  const collectionScheduleWeek =
-    calculateCollectionSchedule(nextCollectionDate);
+  const collectionScheduleWeek = calculateCollectionSchedule(
+    plannedCollectionDate
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -26,31 +31,22 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    //setDayShift(await calculateDayShift())
     const fetchData = async () => {
-      //const x = await calculate();
-      setDayShift(await calculateDayShift());
+      const nextCollectionDate = await calculateNextCollectionDate(
+        todayDate,
+        calculatePlannedCollectionDate(todayDate)
+      );
+      setAdjustedCollectionDate(nextCollectionDate); // calendar date with day shift
     };
 
     fetchData();
-    //hello ue
   }, [todayDate]);
-
-  async function calculateDayShift() {
-    // check localStorage, if empty or invalid
-    // await fetch holidays
-    // then store in localStorage holidays: { year: 2023, days: [] }
-    // calculate day shift
-    return 1;
-  }
-
-  console.log(calculateDayShift()); // 1
 
   return (
     <main>
       <div className="container">
         <h3>Today&apos;s date: {todayDate.toDateString()}</h3>
-        <h3>Next collection: {nextCollectionDate.toDateString()}</h3>
+        <h3>Next collection: {adjustedCollectionDate.toDateString()}</h3>
         <div className="line"></div>
         <Bins weekSchedule={collectionScheduleWeek} />
       </div>
@@ -62,10 +58,10 @@ function Bins({ weekSchedule }) {
   const binsList = BINS_DATA.filter(({ name, _ }) =>
     weekSchedule.includes(name)
   ).map(({ name, url }) => (
-    <>
-      <Bin name={name} url={url} key={url} />
+    <div key={url}>
+      <Bin name={name} url={url} />
       <div className="line line--thin"></div>
-    </>
+    </div>
   ));
   return <div className="bins">{binsList}</div>;
 }

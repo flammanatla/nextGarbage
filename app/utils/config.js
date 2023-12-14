@@ -22,7 +22,7 @@ export const BINS_DATA = [
 ];
 
 export const SCHEDULE = {
-  startingDate: "2023-12-06T00:00:01", // weekBrown is scheduled at that date
+  startingDate: "2023-12-06", // weekBrown is scheduled at that date
   weekGreen: ["Non-recyclable", "Paper and cardboard", "Food waste"],
   weekBrown: ["Garden waste", "Plastic, cans and glass", "Food waste"],
 };
