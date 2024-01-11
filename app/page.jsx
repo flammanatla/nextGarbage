@@ -5,7 +5,7 @@ import { BINS_DATA } from "./utils/config.js";
 import {
   calculatePlannedCollectionDate,
   calculateCollectionSchedule,
-  calculateNextCollectionDate,
+  calculateAdjustedCollectionDate,
 } from "./utils/helpers.js";
 
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const nextCollectionDate = await calculateNextCollectionDate(
+      const nextCollectionDate = await calculateAdjustedCollectionDate(
         todayDate,
         calculatePlannedCollectionDate(todayDate)
       );

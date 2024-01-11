@@ -1,9 +1,11 @@
+const BANK_HOLIDAYS_KEY = "bank_holidays";
+
 export function loadBankHolidaysFromLocalStorage() {
-  return localStorage.getItem("bank_holidays") !== null
-    ? JSON.parse(localStorage.getItem("bank_holidays"))
+  return localStorage.getItem(BANK_HOLIDAYS_KEY) !== null
+    ? JSON.parse(localStorage.getItem(BANK_HOLIDAYS_KEY))
     : [];
 }
 
 export function updateLocalStorage(bankHolidays) {
-  localStorage.setItem("bank_holidays", JSON.stringify(bankHolidays));
+  localStorage.setItem(BANK_HOLIDAYS_KEY, JSON.stringify(bankHolidays));
 }
