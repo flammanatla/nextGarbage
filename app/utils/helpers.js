@@ -1,5 +1,5 @@
 import { SCHEDULE } from "./config.js";
-import { loadBankHolidays } from "./loadBankHolidays.js";
+import { loadBankHolidays } from "./loadHolidays.js";
 
 export function calculatePlannedCollectionDate(todayDate) {
   console.log(todayDate);
@@ -9,8 +9,6 @@ export function calculatePlannedCollectionDate(todayDate) {
       : 7 - todayDate.getDay() + 3;
 
   const collectionDate = modifyDays(todayDate, daysTillNextWed);
-
-  console.log(collectionDate);
 
   return collectionDate;
 }
@@ -23,7 +21,6 @@ export function calculateCollectionSchedule(plannedCollectionDate) {
     (endDate - startDate) / (1000 * 60 * 60 * 24)
   );
 
-  console.log("differenceInDays", differenceInDays);
   return differenceInDays % 14 === 0 ? SCHEDULE.weekBrown : SCHEDULE.weekGreen;
 }
 
