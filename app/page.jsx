@@ -49,6 +49,7 @@ export default function Home() {
         <h3>Next collection: {adjustedCollectionDate.toDateString()}</h3>
         <div className="line"></div>
         <Bins weekSchedule={collectionScheduleWeek} />
+        <div className="line"></div>
       </div>
     </main>
   );
@@ -60,7 +61,6 @@ function Bins({ weekSchedule }) {
   ).map(({ name, url }) => (
     <div key={url}>
       <Bin name={name} url={url} />
-      <div className="line line--thin"></div>
     </div>
   ));
   return <div className="bins">{binsList}</div>;
