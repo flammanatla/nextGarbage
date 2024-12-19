@@ -8,7 +8,7 @@ body {
 
 main {
   h3 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0.5rem;
   }
 }
@@ -19,14 +19,9 @@ main {
 // }
 
 .line {
-  border-bottom: 5px solid #d4d4d4;
-  margin-top: 1.5rem;
   width: 100%;
-
-  &--thin {
-    border-bottom: 2px solid #d4d4d4;
-    margin-top: 1rem;
-  }
+  border-bottom: 2px solid #d4d4d4;
+  margin-top: 1rem;
 }
 
 .bins {
@@ -34,6 +29,13 @@ main {
   display: flex;
   justify-content: space-around;
   .bin {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+    span {
+      font-size: 12px;
+    }
     margin-top: 1rem;
     display: flex;
     flex-direction: column;

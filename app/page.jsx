@@ -49,7 +49,6 @@ export default function Home() {
         <h3>Next collection: {adjustedCollectionDate.toDateString()}</h3>
         <div className="line"></div>
         <Bins weekSchedule={collectionScheduleWeek} />
-        <div className="line"></div>
       </div>
     </main>
   );
